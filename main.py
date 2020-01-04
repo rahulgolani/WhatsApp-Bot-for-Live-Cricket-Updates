@@ -8,7 +8,7 @@ class Score:
         '''Initializing all the required endpoints '''
         self.getAllMatches="http://cricapi.com/api/matches/"
         self.getScore="http://cricapi.com/api/cricketScore"
-        self.apiKey="fLehGQotgcMvU5o7z4DYbXCi0qE2"
+        self.apiKey="Your ApiKey"
         self.uniqueId=""
 
     def getUniqueId(self):
@@ -34,7 +34,7 @@ class Score:
 
         #print(self.uniqueId)
         sendData=self.getScoreCurrent(self.uniqueId)
-        print(sendData)
+        return sendData
 
     def getScoreCurrent(self,uniqueId):
         data=""
@@ -51,4 +51,9 @@ class Score:
 
 if __name__ == '__main__':
     score=Score()
-    score.getUniqueId()
+    updates=score.getUniqueId()
+    from twilio.rest import Client
+    a_sid="Your Account SID"
+    auth_token="Your Account Auth Token"
+    client=Client(a_sid,auth_token)
+    message=client.messages.create(body=updates,from_='whatsapp:+14155238886',to='whatsapp:your whatsApp number')
