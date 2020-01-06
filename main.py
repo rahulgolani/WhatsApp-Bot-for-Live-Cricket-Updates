@@ -2,13 +2,14 @@ import requests
 import json
 import pprint
 from datetime import datetime
+
 class Score:
 
     def __init__(self):
         '''Initializing all the required endpoints '''
         self.getAllMatches="http://cricapi.com/api/matches/"
         self.getScore="http://cricapi.com/api/cricketScore"
-        self.apiKey="Your ApiKey"
+        self.apiKey="fLehGQotgcMvU5o7z4DYbXCi0qE2"
         self.uniqueId=""
 
     def getUniqueId(self):
@@ -18,7 +19,7 @@ class Score:
         uIdFound=0
         #pprint.pprint(respDict)
         for i in respDict['matches']:
-            if (i['team-1']=='Australia' or i['team-2']=='Australia' and i['matchStarted']):
+            if (i['team-1']=='England' or i['team-2']=='England' and i['matchStarted']):
                 #todaysDate=datetime.today().strftime('%Y-%m-%d')
                 '''
                 if todaysDate==i['date'].split('T')[0]:
@@ -29,7 +30,7 @@ class Score:
                 break
         if uIdFound==0:
             self.uniqueId=-1
-            print('No Matches Today')
+            print('No Matches Underway!')
             return
 
         #print(self.uniqueId)
@@ -53,7 +54,7 @@ if __name__ == '__main__':
     score=Score()
     updates=score.getUniqueId()
     from twilio.rest import Client
-    a_sid="Your Account SID"
-    auth_token="Your Account Auth Token"
+    a_sid="AC550dbaebf1bad923cecc555ddc693e34"
+    auth_token="92c331a99ce7ac10fe8622cbaccf119d"
     client=Client(a_sid,auth_token)
-    message=client.messages.create(body=updates,from_='whatsapp:+14155238886',to='whatsapp:your whatsApp number')
+    message=client.messages.create(body=updates,from_='whatsapp:+14155238886',to='whatsapp:+917066321457')
