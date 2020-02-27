@@ -9,7 +9,7 @@ class Score:
         '''Initializing all the required endpoints '''
         self.getAllMatches="http://cricapi.com/api/matches/"
         self.getScore="http://cricapi.com/api/cricketScore"
-        self.apiKey="fLehGQotgcMvU5o7z4DYbXCi0qE2"
+        self.apiKey="Your Api Key"
         self.uniqueId=""
 
     def getUniqueId(self,team_name):
@@ -61,8 +61,8 @@ if __name__ == '__main__':
     updates=getMessage('India')
     #print(updates)
     from twilio.rest import Client
-    a_sid="AC550dbaebf1bad923cecc555ddc693e34"
-    auth_token="92c331a99ce7ac10fe8622cbaccf119d"
+    a_sid="s_id"
+    auth_token="auth token"
     client=Client(a_sid,auth_token)
-    message=client.messages.create(body=updates,from_='whatsapp:+14155238886',to='whatsapp:+917066321457')
+    message=client.messages.create(body=updates,from_='whatsapp:+14155238886',to='whatsapp:+91whatsapp number')
 '''
